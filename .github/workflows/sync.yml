@@ -22,6 +22,6 @@ jobs:
         git fetch upstream
         git checkout master
         git merge upstream/master
-        git push origin master
+        git push https://${{ secrets.GIT_AUTH_TOKEN }}@github.com/ForeverXiang/ACL4SSR.git master
       env:
         GIT_AUTH_TOKEN: ${{ secrets.MY_PAT }}
