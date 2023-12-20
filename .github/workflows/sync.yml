@@ -31,18 +31,11 @@ jobs:
           # 克隆ACL4SSR/ACL4SSR的master分支
           git clone --single-branch --branch master https://github.com/ACL4SSR/ACL4SSR.git synced_repo
 
-          # 进入克隆的仓库目录
-          cd synced_repo
-
-          # 清理旧文件，但保留 .github 目录
+          # 清理旧文件，但保留 .github 和 .git 目录
           find . -maxdepth 1 ! -name '.git' ! -name '.github' ! -name '.' ! -name '..' -exec rm -rf {} \;
 
-          # 返回到工作目录
-          cd ..
-
-          # 复制新文件到当前仓库
-          cp -a synced_repo/. .
-          cp -a synced_repo/.[^.]* .
+          # 复制新文件，排除 .git 目录
+          rsync -av --exclude='.git' synced_repo/ .
 
           # 提交和推送更改
           git add .
@@ -54,6 +47,7 @@ jobs:
         else
           echo "ACL4SSR/ACL4SSR master branch does not exist"
         fi
+
 
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
