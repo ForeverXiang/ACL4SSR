@@ -23,3 +23,5 @@ jobs:
         git checkout master
         git merge upstream/master
         git push origin master
+      env:
+        GIT_AUTH_TOKEN: ${{ secrets.MY_PAT }}
