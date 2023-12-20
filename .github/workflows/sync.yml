@@ -1,62 +1,27 @@
-name: Sync ACL4SSR Repository
+name: Sync with Upstream Repository
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 每天UTC时间0点运行
-  workflow_dispatch:  # 允许手动触发
+    - cron: '0 0 * * *'  # 每天午夜运行
+  workflow_dispatch:
 
 jobs:
   sync:
     runs-on: ubuntu-latest
-    name: Sync master branch of ACL4SSR
-
     steps:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        fetch-depth: 0
+        fetch-depth: 0  # 获取所有历史
 
-    - name: Initialization environment
+    - name: Sync master branch from upstream
       run: |
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "github-actions[bot]"
-        sudo timedatectl set-timezone "Asia/Shanghai"
-
-    - name: Sync Repository
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        git remote add upstream https://github.com/ACL4SSR/ACL4SSR.git
+        git fetch upstream
+        git checkout master
+        git merge upstream/master
+        git push https://${{ secrets.GIT_AUTH_TOKEN }}@github.com/ForeverXiang/ACL4SSR.git master
       env:
-        ACCESS_TOKEN: ${{ secrets.MY_PAT }}
-      run: |
-        # 检查ACL4SSR/ACL4SSR仓库的master分支是否存在
-        if git ls-remote --heads https://github.com/ACL4SSR/ACL4SSR.git master | grep 'refs/heads/master'; then
-          # 克隆ACL4SSR/ACL4SSR的master分支
-          git clone --single-branch --branch master https://github.com/ACL4SSR/ACL4SSR.git synced_repo
-
-          # 清理旧文件，但保留 .github 和 .git 目录
-          find . -maxdepth 1 ! -name '.git' ! -name '.github' ! -name '.' ! -name '..' -exec rm -rf {} \;
-
-          # 确保在正确的目录
-          cd $GITHUB_WORKSPACE
-
-          # 使用rsync复制文件，排除 .git 目录
-          rsync -av --exclude='.git' synced_repo/ ./
-
-          # 提交和推送更改
-          git add .
-          if git commit -m "Sync with ACL4SSR/ACL4SSR master branch"; then
-            git push --quiet "https://${{ secrets.MY_PAT }}@github.com/${{ github.repository }}" master
-          else
-            echo "Nothing new to commit"
-          fi
-        else
-          echo "ACL4SSR/ACL4SSR master branch does not exist"
-        fi
-
-
-
-    - name: Delete workflow runs
-      uses: Mattraks/delete-workflow-runs@main
-      with:
-        token: ${{ secrets.MY_PAT }}  # 同样使用自定义的PAT
-        repository: ${{ github.repository }}
-        retain_days: 1
-        keep_minimum_runs: 1
+        GIT_AUTH_TOKEN: ${{ secrets.MY_PAT }}
