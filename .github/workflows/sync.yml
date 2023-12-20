@@ -1,27 +1,26 @@
-name: Sync with Upstream Repository
+name: Manual Sync Fork
 
 on:
+  workflow_dispatch:  # 手动触发
   schedule:
-    - cron: '0 0 * * *'  # 每天午夜运行
-  workflow_dispatch:
+    - cron: '0 0 * * *'  # 还可以按计划定时运行
 
 jobs:
-  sync:
+  sync-master-branch:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout
+    - name: Checkout the master branch of the source repository
       uses: actions/checkout@v2
       with:
-        fetch-depth: 0  # 获取所有历史
+        repository: 'ACL4SSR/ACL4SSR'
+        ref: 'master'
+        token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Sync master branch from upstream
-      run: |
-        git config user.name 'ForeverXiang'
-        git config user.email 'wdmzjxx@live.com'
-        git remote add upstream https://github.com/ACL4SSR/ACL4SSR.git
-        git fetch upstream
-        git checkout master
-        git merge upstream/master
-        git push https://${{ secrets.GIT_AUTH_TOKEN }}@github.com/ForeverXiang/ACL4SSR.git master
-      env:
-        GIT_AUTH_TOKEN: ${{ secrets.MY_PAT }}
+    - name: Sync the master branch
+      uses: repo-sync/github-sync@v2
+      with:
+        source_repo: 'ACL4SSR/ACL4SSR'
+        source_branch: 'master'
+        destination_branch: 'master'
+        github_token: ${{ secrets.GITHUB_TOKEN }}
