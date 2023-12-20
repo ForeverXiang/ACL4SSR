@@ -1,4 +1,4 @@
-name: Sync with Upstream Repository
+name: Force Sync with Upstream Repository
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  sync:
+  force-sync:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -14,14 +14,13 @@ jobs:
       with:
         fetch-depth: 0  # 获取所有历史
 
-    - name: Sync master branch from upstream
+    - name: Force Sync master branch from upstream
       run: |
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
         git remote add upstream https://github.com/ACL4SSR/ACL4SSR.git
         git fetch upstream
-        git checkout master
-        git merge upstream/master
-        git push https://${{ secrets.GIT_AUTH_TOKEN }}@github.com/ForeverXiang/ACL4SSR.git master
+        git reset --hard upstream/master
+        git push -f origin master
       env:
         GIT_AUTH_TOKEN: ${{ secrets.MY_PAT }}
