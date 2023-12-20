@@ -23,5 +23,3 @@ jobs:
         git checkout --track upstream/master || git checkout -b master upstream/master
         git reset --hard upstream/master
         git push -f origin master
-      env:
-        GIT_AUTH_TOKEN: ${{ secrets.MY_PAT }}
