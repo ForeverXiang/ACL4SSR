@@ -20,6 +20,7 @@ jobs:
         git config user.email 'github-actions[bot]@users.noreply.github.com'
         git remote add upstream https://github.com/ACL4SSR/ACL4SSR.git
         git fetch upstream
+        git checkout master || git checkout -b master
         git reset --hard upstream/master
         git push -f origin master
       env:
