@@ -24,18 +24,31 @@ jobs:
 
     - name: Sync Repository
       env:
-        ACCESS_TOKEN: ${{ secrets.MY_PAT }}  # 使用自定义的PAT
+        ACCESS_TOKEN: ${{ secrets.MY_PAT }}
       run: |
-        git clone -b master https://github.com/ACL4SSR/ACL4SSR.git synced_repo
-        cd synced_repo
-        if git status --porcelain | grep .; then
+        # 检查ACL4SSR/ACL4SSR仓库的master分支是否存在
+        if git ls-remote --heads https://github.com/ACL4SSR/ACL4SSR.git master | grep 'refs/heads/master'; then
+          # 克隆ACL4SSR/ACL4SSR的master分支
+          git clone --single-branch --branch master https://github.com/ACL4SSR/ACL4SSR.git synced_repo
+          cd synced_repo
+
+          # 清理旧文件，但保留 .github 目录
+          find . -maxdepth 1 ! -name '.git' ! -name '.github' ! -name '.' ! -name '..' -exec rm -rf {} \;
+
+          # 复制新文件
+          cp -a ../synced_repo/* ./
+          cp -a ../synced_repo/.[^.]* ./
+
+          # 提交和推送更改
           git add .
-          git commit -am "update $(date '+%Y-%m-%d %H:%M:%S')"
-          git push --quiet "https://${{ secrets.MY_PAT }}@github.com/${{ github.repository }}" master
+          if git commit -m "Sync with ACL4SSR/ACL4SSR master branch"; then
+            git push --quiet "https://${{ secrets.MY_PAT }}@github.com/${{ github.repository }}" master
+          else
+            echo "Nothing new to commit"
+          fi
         else
-          echo "nothing to commit"
-          exit 0
-        fi || exit 0
+          echo "ACL4SSR/ACL4SSR master branch does not exist"
+        fi
 
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
