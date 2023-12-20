@@ -34,8 +34,11 @@ jobs:
           # 清理旧文件，但保留 .github 和 .git 目录
           find . -maxdepth 1 ! -name '.git' ! -name '.github' ! -name '.' ! -name '..' -exec rm -rf {} \;
 
-          # 复制新文件，排除 .git 目录
-          rsync -av --exclude='.git' synced_repo/ .
+          # 确保在正确的目录
+          cd $GITHUB_WORKSPACE
+
+          # 使用rsync复制文件，排除 .git 目录
+          rsync -av --exclude='.git' synced_repo/ ./
 
           # 提交和推送更改
           git add .
@@ -47,6 +50,7 @@ jobs:
         else
           echo "ACL4SSR/ACL4SSR master branch does not exist"
         fi
+
 
 
     - name: Delete workflow runs
