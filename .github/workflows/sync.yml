@@ -16,8 +16,8 @@ jobs:
 
     - name: Sync master branch from upstream
       run: |
-        git config user.name 'your-username'
-        git config user.email 'your-email@example.com'
+        git config user.name 'ForeverXiang'
+        git config user.email 'wdmzjxx@live.com'
         git remote add upstream https://github.com/ACL4SSR/ACL4SSR.git
         git fetch upstream
         git checkout master
