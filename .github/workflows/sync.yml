@@ -20,7 +20,8 @@ jobs:
     - name: Sync the master branch
       uses: repo-sync/github-sync@v2
       with:
-        source_repo: 'ACL4SSR/ACL4SSR'
-        source_branch: 'master'
-        destination_branch: 'master'
-        github_token: ${{ secrets.MY_PAT }}
+        source_repo: "https://github.com/ACL4SSR/ACL4SSR.git"
+        source_branch: "master"
+        destination_branch: "master"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
