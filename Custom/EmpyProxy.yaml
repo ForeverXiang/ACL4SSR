@@ -5,6 +5,7 @@ payload:
   - DOMAIN-SUFFIX,789.123456.al
   - DOMAIN-SUFFIX,cdn.misakaf.org
   - DOMAIN-SUFFIX,emby.misakaf.org
+  - DOMAIN-SUFFIX,tz.misakaf.org
   - DOMAIN-SUFFIX,stream1.misakaf.org
   - DOMAIN-SUFFIX,stream2.misakaf.org
   - DOMAIN-SUFFIX,stream3.misakaf.org
