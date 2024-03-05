@@ -1,6 +1,5 @@
 payload:
   # 内容：Empy代理
-  - DOMAIN-SUFFIX,ocsp.pki.goog
   - DOMAIN-SUFFIX,gp.ii00.cc
   - DOMAIN-SUFFIX,gg.ii00.cc
   - DOMAIN-SUFFIX,789.123456.al
