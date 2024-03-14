@@ -1,6 +1,3 @@
 payload:
   # 内容：Emby直连
-  - DOMAIN-SUFFIX,sp.ii00.cc
-  - DOMAIN-SUFFIX,sg.ii00.cc
-  - DOMAIN-SUFFIX,s.ii00.cc
   - DOMAIN-SUFFIX,tz.misakaf.org
