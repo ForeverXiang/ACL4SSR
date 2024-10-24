@@ -1,3 +1,4 @@
 payload:
   # 内容：自定义代理
   - DOMAIN-SUFFIX,ocsp.pki.goog
+  - DOMAIN-SUFFIX,bgp.gd
