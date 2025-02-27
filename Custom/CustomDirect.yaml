@@ -4,5 +4,15 @@ payload:
   - DOMAIN-SUFFIX,mask.icloud.com
   - DOMAIN-SUFFIX,mask-h2.icloud.com
   - DOMAIN-SUFFIX,mask.apple-dns.net
-  - DOMAIN-SUFFIX,dl.jiegpt.eu.org
-  - DOMAIN-SUFFIX,alist-proxy.gonna.top
+  
+  # cncfcdn直链配置
+  - DOMAIN-SUFFIX,cncfcdn.gonna.top
+  - DOMAIN-SUFFIX,qb2.gonna.top
+  - DOMAIN-SUFFIX,qb1.gonna.top
+  - DOMAIN-SUFFIX,pfgo.gonna.top
+  - DOMAIN-SUFFIX,mp.gonna.top
+  - DOMAIN-SUFFIX,ey.gonna.top
+  - DOMAIN-SUFFIX,dcd.gonna.top
+  - DOMAIN-SUFFIX,auth-ui.gonna.top
+  - DOMAIN-SUFFIX,alist.gonna.top
+  - DOMAIN-SUFFIX,chat.gonna.top
