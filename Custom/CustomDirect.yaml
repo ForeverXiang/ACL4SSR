@@ -8,7 +8,6 @@ payload:
   # cncfcdn直链配置
   - DOMAIN-SUFFIX,cfcdn.gonna.top
   - DOMAIN-SUFFIX,alist-proxy.gonna.top
-  - DOMAIN-SUFFIX,cncfcdn.gonna.top
   - DOMAIN-SUFFIX,qb2.gonna.top
   - DOMAIN-SUFFIX,qb1.gonna.top
   - DOMAIN-SUFFIX,pfgo.gonna.top
