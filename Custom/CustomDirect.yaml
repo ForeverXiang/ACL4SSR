@@ -6,6 +6,7 @@ payload:
   - DOMAIN-SUFFIX,mask.apple-dns.net
   
   # cncfcdn直链配置
+  - DOMAIN-SUFFIX,cfdoh.gonna.top
   - DOMAIN-SUFFIX,cncfcdn.gonna.top
   - DOMAIN-SUFFIX,ofiii.gonna.top
   - DOMAIN-SUFFIX,alist-proxy.gonna.top
