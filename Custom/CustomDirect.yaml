@@ -19,3 +19,7 @@ payload:
   - DOMAIN-SUFFIX,auth-ui.gonna.top
   - DOMAIN-SUFFIX,alist.gonna.top
   - DOMAIN-SUFFIX,chat.gonna.top
+
+  # PT的tracker直连配置
+  - DOMAIN-SUFFIX,tracker.m-team.cc
+  - DOMAIN-SUFFIX,tracker.hhanclub.top
