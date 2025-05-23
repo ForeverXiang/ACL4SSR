@@ -1,1 +1,4 @@
-
+payload:
+  # PT的tracker直连配置
+  - DOMAIN-SUFFIX,tracker.m-team.cc
+  - DOMAIN-SUFFIX,tracker.hhanclub.top
