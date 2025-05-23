@@ -1,10 +1,6 @@
 payload:
   # 内容：自定义直连
-  - DOMAIN-SUFFIX,baidu.com
-  - DOMAIN-SUFFIX,mask.icloud.com
-  - DOMAIN-SUFFIX,mask-h2.icloud.com
-  - DOMAIN-SUFFIX,mask.apple-dns.net
-  
+
   # cncfcdn直链配置
   - DOMAIN-SUFFIX,cfdoh.gonna.top
   - DOMAIN-SUFFIX,cncfcdn.gonna.top
@@ -19,7 +15,3 @@ payload:
   - DOMAIN-SUFFIX,auth-ui.gonna.top
   - DOMAIN-SUFFIX,alist.gonna.top
   - DOMAIN-SUFFIX,chat.gonna.top
-
-  # PT的tracker直连配置
-  - DOMAIN-SUFFIX,tracker.m-team.cc
-  - DOMAIN-SUFFIX,tracker.hhanclub.top
