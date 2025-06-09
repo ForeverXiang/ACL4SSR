@@ -2,16 +2,4 @@ payload:
   # 内容：自定义直连
 
   # cncfcdn直链配置
-  - DOMAIN-SUFFIX,cfdoh.gonna.top
-  - DOMAIN-SUFFIX,cncfcdn.gonna.top
-  - DOMAIN-SUFFIX,ofiii.gonna.top
-  - DOMAIN-SUFFIX,alist-proxy.gonna.top
-  - DOMAIN-SUFFIX,qb2.gonna.top
-  - DOMAIN-SUFFIX,qb1.gonna.top
-  - DOMAIN-SUFFIX,pfgo.gonna.top
-  - DOMAIN-SUFFIX,mp.gonna.top
-  - DOMAIN-SUFFIX,ey.gonna.top
-  - DOMAIN-SUFFIX,dcd.gonna.top
-  - DOMAIN-SUFFIX,auth-ui.gonna.top
-  - DOMAIN-SUFFIX,alist.gonna.top
-  - DOMAIN-SUFFIX,chat.gonna.top
+  - DOMAIN-SUFFIX,gonna.top
