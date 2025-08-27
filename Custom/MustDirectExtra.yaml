@@ -2,4 +2,16 @@ payload:
   # PT的tracker直连配置
   - DOMAIN-SUFFIX,tracker.m-team.cc
   - DOMAIN-SUFFIX,tracker.hhanclub.top
+  # stun打洞域名
   - DOMAIN-SUFFIX,njly.gonna.top
+  # stun打洞服务器
+  - DOMAIN-SUFFIX,stun.nextcloud.com
+  - DOMAIN-SUFFIX,fwa.lifesizecloud.com
+  - DOMAIN-SUFFIX,stun.isp.net.au
+  - DOMAIN-SUFFIX,stun.freeswitch.org
+  - DOMAIN-SUFFIX,stun.voip.blackberry.com
+  - DOMAIN-SUFFIX,stun.stunprotocol.org
+  - DOMAIN-SUFFIX,stun.sipnet.com
+  - DOMAIN-SUFFIX,stun.radiojar.com
+  - DOMAIN-SUFFIX,stun.sonetel.com
+  - DOMAIN-SUFFIX,stun.voipgate.com
