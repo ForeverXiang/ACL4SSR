@@ -11,24 +11,29 @@ permissions:
 jobs:
   force-sync:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout current repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Force Sync master branch from upstream
+      - name: Force sync master branch from upstream
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
 
           git remote add upstream https://github.com/ACL4SSR/ACL4SSR.git
+          git fetch origin
           git fetch upstream
 
-          git checkout master
+          git checkout -B master origin/master
           git reset --hard upstream/master
 
-          # 保留自己仓库里的 workflow，避免 GitHub Actions 修改 workflow 文件
+          # 保留你自己仓库里的 workflow，避免 GitHub Actions 修改 .github/workflows 文件
           git checkout origin/master -- .github/workflows || true
+
+          git add .github/workflows || true
+          git commit -m "Keep local workflows" || true
 
           git push -f origin master
